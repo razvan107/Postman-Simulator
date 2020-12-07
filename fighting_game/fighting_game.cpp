@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Header.h"
-using namespace std;
+using namespace std; 
 
 class champ {
 	string name;
