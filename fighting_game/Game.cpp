@@ -2,13 +2,13 @@
 
 Game::Game()
 {
-	this->prepareWindow();
-	this->prepareFont();
+	prepareWindow();
+	prepareFont();
 }
 
 Game::~Game()
 {
-	delete this-> window;
+	delete  window;
 }
 
 void Game::update()
@@ -18,25 +18,25 @@ void Game::update()
 
 void Game::updateEvents()
 {
-	while (this->window->pollEvent(this->event))
+	while (window->pollEvent(event))
 	{
-		switch (this->event.type)
+		switch (event.type)
 		{
 		case sf::Event::Closed:
-			this->window->close(); break;
+			window->close(); break;
 
 		case Event::KeyPressed:
-			if (this->event.key.code == Keyboard::Escape)
-				this->window->close(); break;
+			if (event.key.code == Keyboard::Escape)
+				window->close(); break;
 		}
 	}
 }
 
 void Game::prepareWindow()
 {
-	this->videoMode.height = 387;
-	this->videoMode.width = 646;
-	this->window = new RenderWindow(this->videoMode, "Arena");
+	videoMode.height = 387;
+	videoMode.width = 646;
+	window = new RenderWindow(videoMode, "Arena");
 }
 
 void Game::prepareFont()
@@ -67,5 +67,5 @@ void Game::render()
 
 bool Game::running()
 {
-	return this->window->isOpen();
+	return window->isOpen();
 }
