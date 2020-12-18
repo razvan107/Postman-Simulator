@@ -10,11 +10,11 @@ private:
 	int base_damage;
 	int armor;
 #pragma region setters_getters_checkers_showers
-	void	Set_health(int new_hp);
 	//SETTERS
-	void	Set_max_health(int new_max_hp);
-	void	Set_base_damage(int new_base_damage);
-	void	Set_armor(int new_armor);
+	void	Set_health		(int new_hp);
+	void	Set_max_health	(int new_max_hp);
+	void	Set_base_damage	(int new_base_damage);
+	void	Set_armor		(int new_armor);
 
 	//GETTERS
 	int		Get_health()		const;
@@ -24,16 +24,11 @@ private:
 
 
 	//CHECKERS
-	void	Check_health();
-	bool	Check_is_Dead();
+
 	//SHOWERS
-	void	Show_Fight_Intro(const champion& enemy);
-	void	Show_Round_Header(const champion& enemy);
-	void	Show_name()const;
-	void	Show_health()const;
-	void	Show_all()const;
+
 	//AUTOMATIC ACTIONS
-	void	Play_Round(champion& enemy, bool& round);
+
 	bool	Select_Attack(champion& enemy);
 
 	//ABILITIES/POWERS
@@ -42,9 +37,19 @@ private:
 
 #pragma endregion
 public:
+	void	Check_health();
+	bool	Check_is_Dead();
+
+	void	Play_Round(champion& enemy, bool& round);
+
+	void	Show_Fight_Intro(const champion& enemy);
+	void	Show_Round_Header(const champion& enemy);
+	void	Show_name()const;
+	void	Show_health()const;
+	void	Show_all()const;
+
 	champion(const string& name, int health, int base_damage, int armor);
 	string	Get_name() const;
-	bool Fight(champion& enemy);
 };
 
 

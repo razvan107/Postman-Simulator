@@ -26,7 +26,7 @@ void	champion::Set_armor(int new_armor)
 int		champion::Get_health()		const { return health; }
 int		champion::Get_max_health()	const { return max_health; }
 int		champion::Get_base_damage()	const { return base_damage; }
-
+string	champion::Get_name()		const { return name;}
 
 
 //CHECKERS
@@ -47,7 +47,7 @@ bool	champion::Check_is_Dead()
 	return 0;
 }
 //SHOWERS
-void	champion::Show_Fight_Intro(const champion& enemy)
+void	champion::Show_Fight_Intro (const champion& enemy)
 {
 	cout << name << " fights " << enemy.name << endl << "____________________________________________" << "\n" << endl << endl;
 
@@ -56,23 +56,25 @@ void	champion::Show_Round_Header(const champion& enemy)
 {
 	cout << endl << name << " picks an action against " << enemy.name << endl;
 }
-void	champion::Show_name()const
+void	champion::Show_name()		const
 {
 	cout << "name: " << name << endl;
 }
-void	champion::Show_health()const
+void	champion::Show_health()		const
 {
 	cout << name << " health: " << health << "\\" << max_health << endl;
 }
-void	champion::Show_all()const
+void	champion::Show_all()		const
 {
 	cout << name << " Health: " << Get_health() << "/" << Get_max_health();
 
 }
+#pragma endregion
 //AUTOMATIC ACTIONS
 void	champion::Play_Round(champion& enemy, bool& round)
 {
-	Show_Round_Header(enemy);
+	//CONSOLE					//WINDOW
+	Show_Round_Header(enemy);	
 	bool x = Select_Attack(enemy);
 	if (x) round = !round;
 }
@@ -119,7 +121,7 @@ void	champion::Self_heal(int i)
 	Set_health(health + i);
 }
 
-#pragma endregion
+
 	champion::champion(const string& name, int health, int base_damage, int armor)
 	{
 		this->name = name;
@@ -128,31 +130,4 @@ void	champion::Self_heal(int i)
 		this->armor = armor;
 		max_health = health;
 	}
-	string	champion::Get_name() const
-	{
-		return name;
-	}
-	bool champion::Fight(champion& enemy)
-	{
-		bool round = 1;
-		bool roundCount = 1;
-		Show_Fight_Intro(enemy);
-		//wait(1);
-		while (true)
-		{
-			if (round) Play_Round(enemy, round); //chose who actions
-			else enemy.Play_Round(*this, round);
 
-
-			//wait(2);
-			system("CLS");
-
-			Show_all();		enemy.Show_all();
-
-
-
-			if (Check_is_Dead()) return 1;		//anyone dead?
-			else if (enemy.Check_is_Dead()) return 0;
-			round = !round; roundCount++;
-		}
-	}
