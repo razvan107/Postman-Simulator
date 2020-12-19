@@ -6,18 +6,18 @@ using namespace std;
 class champion {
 private:
 	string name;
-	int health; int max_health;
-	int base_damage;
-	int armor;
+	int health = 0; int max_health = 0;
+	int base_damage = 0;
+	int armor = 0;
 #pragma region setters_getters_checkers_showers
 	//SETTERS
-	void	Set_health		(int new_hp);
+
 	void	Set_max_health	(int new_max_hp);
 	void	Set_base_damage	(int new_base_damage);
 	void	Set_armor		(int new_armor);
 
 	//GETTERS
-	int		Get_health()		const;
+
 	int		Get_max_health()	const;
 	int		Get_base_damage()	const;
 
@@ -37,18 +37,21 @@ private:
 
 #pragma endregion
 public:
+	void	Set_health(int new_hp);
+	int		Get_health()		const;
 	void	Check_health();
 	bool	Check_is_Dead();
 
 	void	Play_Round(champion& enemy, bool& round);
 
-	void	Show_Fight_Intro(const champion& enemy);
+	string	Show_Fight_Intro(const champion& enemy);
 	void	Show_Round_Header(const champion& enemy);
 	void	Show_name()const;
 	void	Show_health()const;
 	void	Show_all()const;
 
 	champion(const string& name, int health, int base_damage, int armor);
+	champion();
 	string	Get_name() const;
 };
 

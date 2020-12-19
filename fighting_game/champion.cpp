@@ -47,10 +47,12 @@ bool	champion::Check_is_Dead()
 	return 0;
 }
 //SHOWERS
-void	champion::Show_Fight_Intro (const champion& enemy)
+string	champion::Show_Fight_Intro (const champion& enemy)
 {
-	cout << name << " fights " << enemy.name << endl << "____________________________________________" << "\n" << endl << endl;
-
+	string x;
+	x = name + " fights " + enemy.name;
+	cout << x << endl << "____________________________________________" << "\n" << endl << endl;
+	return x;
 }
 void	champion::Show_Round_Header(const champion& enemy)
 {
@@ -130,4 +132,6 @@ void	champion::Self_heal(int i)
 		this->armor = armor;
 		max_health = health;
 	}
-
+	champion::champion()
+	{
+	}
