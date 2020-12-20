@@ -23,10 +23,11 @@ void	champion::Set_armor(int new_armor)
 }
 
 //GETTERS
-int		champion::Get_health()		const { return health; }
-int		champion::Get_max_health()	const { return max_health; }
-int		champion::Get_base_damage()	const { return base_damage; }
-string	champion::Get_name()		const { return name;}
+int		champion::Get_health()		const  { return health;		}
+void	champion::Set_name(string new_name){ name = new_name;	}
+int		champion::Get_max_health()	const  { return max_health; }
+int		champion::Get_base_damage()	const  { return base_damage;}
+string	champion::Get_name()		const  { return name;		}
 
 
 //CHECKERS
@@ -48,15 +49,11 @@ bool	champion::Check_is_Dead()
 }
 //SHOWERS
 string	champion::Show_Fight_Intro (const champion& enemy)
-{
-	string x;
-	x = name + " fights " + enemy.name;
-	cout << x << endl << "____________________________________________" << "\n" << endl << endl;
-	return x;
-}
-void	champion::Show_Round_Header(const champion& enemy)
+{return name + " fights " + enemy.name;}
+string	champion::Show_Round_Header(const champion& enemy)
 {
 	cout << endl << name << " picks an action against " << enemy.name << endl;
+	return name + " picks an action against " + enemy.name;
 }
 void	champion::Show_name()		const
 {
@@ -66,10 +63,9 @@ void	champion::Show_health()		const
 {
 	cout << name << " health: " << health << "\\" << max_health << endl;
 }
-void	champion::Show_all()		const
+string	champion::Show_all()		const
 {
-	cout << name << " Health: " << Get_health() << "/" << Get_max_health();
-
+	return Get_name()+ "'s Health: " + to_string(Get_health()) + "/" + to_string( Get_max_health());
 }
 #pragma endregion
 //AUTOMATIC ACTIONS
@@ -124,7 +120,7 @@ void	champion::Self_heal(int i)
 }
 
 
-	champion::champion(const string& name, int health, int base_damage, int armor)
+	champion::champion(string& name, int health, int base_damage, int armor)
 	{
 		this->name = name;
 		this->health = health;

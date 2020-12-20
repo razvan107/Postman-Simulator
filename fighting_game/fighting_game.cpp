@@ -11,12 +11,11 @@ int main()
 	{
 		bool round = 1;
 		bool roundCount = 1;
-		system("PAUSE");
 		game.renderIntro();
 
 		while (true)
 		{
-			game.player1.Show_name();
+
 
 			//if (round) player1.Play_Round(player2, round); else  player2.Play_Round(player1, round);
 

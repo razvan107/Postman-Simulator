@@ -16,23 +16,30 @@ class Game
 
 	Font font;
 	Text text;
+	Text header;
 
-	sf::Texture texture;
-	Sprite sprite;
-
-public:
+	Sprite BgSprite;
 	RenderWindow* window;
 	champion player1;
 	champion player2;
+	//champion* player3;
+	Texture BgTexture;
+	Texture P1Texture;
+	Texture P2Texture;
+	Sprite P1Sprite;
+	Sprite P2Sprite;
+	void prepareWindow();
+	void prepareBackground();
+	void preparePlayerTextures();
+	void prepareFont();
+public:
+
 	Game();
 	virtual ~Game();
 	Event event;
 	void update();
 	void updateEvents();
 
-	void prepareWindow();
-	void prepareBackground();
-	void prepareFont();
 
 	void render();
 	void renderIntro();

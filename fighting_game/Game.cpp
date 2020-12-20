@@ -1,12 +1,14 @@
 #include "Game.h"
-
 Game::Game()
 {
 	prepareWindow();
 	prepareBackground();
 	prepareFont();
-	champion player1("Ashe", 2000, 100, 22);
-	champion player2("Damian", 2000, 100, 22);
+	preparePlayerTextures();
+
+	player1.Set_name("ted");
+	player2.Set_name("the Postman");
+	//player3 =new champion("ahs", 2, 2,0);
 }
 
 Game::~Game()
@@ -17,6 +19,7 @@ Game::~Game()
 void Game::update()
 {
 	updateEvents(); //check if a button was pressed
+	header.setString(player1.Show_all() +"   " + player2.Show_all());
 }
 
 void Game::updateEvents()
@@ -47,28 +50,70 @@ void Game::prepareWindow()
 }
 void Game::prepareBackground()
 {
-	if (!texture.loadFromFile("Resources\\Images\\bg.png"))
+
+	if (!BgTexture.loadFromFile("Resources\\Images\\bg.png"))
 	{
 		cout << "BG NOT FOUND" << endl;
 	}
-	sprite.setTexture(texture);
+
+	BgSprite.setTexture(BgTexture);
+}
+void Game::preparePlayerTextures()
+{
+	//PLAYER1
+
+	if (!P1Texture.loadFromFile("Resources\\Images\\P1Texture.png"))
+	{
+		cout << "p1 NOT FOUND" << endl;
+	}
+	P1Sprite.setTexture(P1Texture);
+	P1Sprite.setPosition(Vector2f(80, 150));
+
+	//move P1 in place
+	P1Sprite.setScale(Vector2f(3, 3));
+
+
+
+
+	//PLAYER 2
+	
+	if (!P2Texture.loadFromFile("Resources\\Images\\P2Texture.png"))
+	{
+		cout << "p2 NOT FOUND" << endl;
+	}
+
+	P2Sprite.setTexture(P2Texture);
+	P2Sprite.setScale(Vector2f(3, 3));
+	//move P2 in place
+	P2Sprite.setPosition(Vector2f(280, 150));
 }
 void Game::prepareFont()
 {
-	if (!font.loadFromFile("Resources\\Fonts\\font2.ttf"))
+	if (!font.loadFromFile("Resources\\Fonts\\font.ttf"))
 	{
 		cout << "FONT NOT FOUND" << endl;
 	}
 	text.setFont(font);
 	text.setFillColor(Color::Black);
+	text.setCharacterSize(20);
+
+	header.setFont(font);
+	header.setFillColor(Color::Black);
+	header.setCharacterSize(15);
+	header.move(Vector2f(0, 360));
 }
 
 
 void Game::render()
 {
 	window->clear();
-	window->draw(sprite);
+	//draw sprites
+	window->draw(BgSprite);
+	window->draw(P1Sprite);
+	window->draw(P2Sprite);
+	//draw the text over the sprites
 	window->draw(text);
+	window->draw(header);
 	window->display();
 }
 
@@ -76,6 +121,7 @@ void Game::renderIntro()
 {
 	string intro;
 	intro = player1.Show_Fight_Intro(player2);
+	window->draw(BgSprite);
 	text.setString(intro);
 	window->draw(text);
 }

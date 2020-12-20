@@ -37,21 +37,25 @@ private:
 
 #pragma endregion
 public:
+	champion( string& name, int health, int base_damage, int armor);
+	champion();
+
 	void	Set_health(int new_hp);
+	void	Set_name(string new_name);
 	int		Get_health()		const;
+
 	void	Check_health();
 	bool	Check_is_Dead();
 
 	void	Play_Round(champion& enemy, bool& round);
 
 	string	Show_Fight_Intro(const champion& enemy);
-	void	Show_Round_Header(const champion& enemy);
+	string	Show_Round_Header(const champion& enemy);
 	void	Show_name()const;
 	void	Show_health()const;
-	void	Show_all()const;
+	string	Show_all()const;
 
-	champion(const string& name, int health, int base_damage, int armor);
-	champion();
+
 	string	Get_name() const;
 };
 
