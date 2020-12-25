@@ -2,10 +2,8 @@
 Game::Game() :player1("the Postman", 1000, 1000, 1000), player2("Ted", 1000, 1000, 1000)
 {
 	prepareWindow();
-	prepareBackground();
 	prepareFont();
 	preparePlayerTextures();
-	prepareIntro();
 }
 Game::~Game()
 {
@@ -14,7 +12,9 @@ Game::~Game()
 
 void Game::update()
 {
-	updateEvents(); //check if a button was pressed
+	//check if a button was pressed
+	updateEvents();
+	//update hp
 	footer.setString(player1.show_all() + "   " + player2.show_all());
 }
 void Game::updateEvents()
@@ -98,6 +98,7 @@ void Game::prepareFont()
 
 void Game::prepareIntro()
 {
+	Game::state = 1;
 	header.setString(player1.Make_Fighter_Header(player2));
 }
 
@@ -105,21 +106,51 @@ void Game::prepareIntro()
 void Game::render()
 {
 	window->clear();
-	//draw sprites
-	window->draw(BgSprite);
-	window->draw(P1Sprite);
-	window->draw(P2Sprite);
+	switch (Game::state)
+	{
+	case 1://intro
+	{
+		window->draw(BgSprite);
+		window->draw(header);
+		window->display();
+		break;
+	}
+	case 2://fight
+	{
+		window->draw(BgSprite);
+		window->draw(P1Sprite);
+		window->draw(P2Sprite);
 
-	//draw the header over the sprites
-	window->draw(header);
-	window->draw(footer);
+		window->draw(header);
+		window->draw(footer);
+		break;
+	}
+	}
 	window->display();
 }
 void Game::renderIntro()
 {
+	window->clear(Color::White);
 	window->draw(BgSprite);
-
 	window->draw(header);
+	window->display();
+}
+void Game::Intro()
+{
+	prepareIntro();
+	update();
+	renderIntro();
+}
+void Game::prepareFight()
+{
+	prepareBackground();
+	state = 2;
+}
+void Game::fight()
+{
+	prepareFight();
+	update();
+	render();
 }
 bool Game::running()
 {

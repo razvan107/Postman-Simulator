@@ -6,28 +6,18 @@ using namespace std;
 int main()
 {//			name hp dmg armor
 	Game game;
-
+	
 	while (game.running())
 	{
 		bool round = 1;
 		bool roundCount = 1;
-		game.renderIntro();
+		game.Intro();
 
 		while (true)
 		{
-
+			game.fight();
 
 			//if (round) player1.Play_Round(player2, round); else  player2.Play_Round(player1, round);
-
-			//check input
-			game.update();
-
-			//CONSOLE								WINDOW
-			//system("CLS");
-
-			game.render(); //clean, draw, display 
-			//player1.Show_all();player2.Show_all();
-
 
 
 			//if (player1.Check_is_Dead()) return 1;		//anyone dead?

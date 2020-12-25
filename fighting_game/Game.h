@@ -13,7 +13,7 @@ class Game
 {
 
 	VideoMode videoMode;
-
+	
 	Font font;
 	Text header;
 	Text footer;
@@ -28,13 +28,22 @@ class Game
 	Texture P2Texture;
 	Sprite P1Sprite;
 	Sprite P2Sprite;
+	
 	void prepareWindow();
-	void prepareBackground();
 	void preparePlayerTextures();
 	void prepareFont();
-	void prepareIntro();
-public:
 
+	void prepareIntro();
+	void renderIntro();
+
+	  void prepareFight();		
+	void prepareBackground();
+
+public:
+	void Intro();
+	void fight();
+
+	int state = 0;
 	Game();
 	virtual ~Game();
 	Event event;
@@ -43,7 +52,7 @@ public:
 
 
 	void render();
-	void renderIntro();
+
 	bool running();
 };
 
