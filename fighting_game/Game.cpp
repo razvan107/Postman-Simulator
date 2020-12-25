@@ -1,5 +1,5 @@
 #include "Game.h"
-Game::Game():player1("the Postman", 1000, 1000, 1000), player2("Ted", 1000, 1000, 1000)
+Game::Game() :player1("the Postman", 1000, 1000, 1000), player2("Ted", 1000, 1000, 1000)
 {
 	prepareWindow();
 	prepareBackground();
@@ -15,7 +15,7 @@ Game::~Game()
 void Game::update()
 {
 	updateEvents(); //check if a button was pressed
-	footer.setString(player1.show_all() +"   " + player2.show_all());
+	footer.setString(player1.show_all() + "   " + player2.show_all());
 }
 void Game::updateEvents()
 {
@@ -69,7 +69,7 @@ void Game::preparePlayerTextures()
 
 
 	//PLAYER 2
-	
+
 	if (!P2Texture.loadFromFile("Resources\\Images\\P2Texture.png"))
 	{
 		cout << "p2 NOT FOUND" << endl;

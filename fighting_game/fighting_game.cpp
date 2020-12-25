@@ -16,7 +16,7 @@ int main()
 		while (true)
 		{
 
-			
+
 			//if (round) player1.Play_Round(player2, round); else  player2.Play_Round(player1, round);
 
 			//check input

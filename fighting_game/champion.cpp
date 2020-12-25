@@ -1,7 +1,7 @@
 #include "champion.h"
 
 using namespace std;
-#pragma region setters_getters_checkers_showers
+#pragma region setters_getters_checkers
 void	champion::set_health(int new_hp)
 {
 	health = new_hp;
@@ -24,9 +24,9 @@ void	champion::set_armor(int new_armor)
 void	champion::set_name(string new_name) { name = new_name; }
 //GETTERS
 int		champion::get_max_health()	const { return max_health; }
-int		champion::get_health()		const  { return health;		}
-int		champion::get_base_damage()	const  { return base_damage;}
-string	champion::get_name()		const  { return name;		}
+int		champion::get_health()		const { return health; }
+int		champion::get_base_damage()	const { return base_damage; }
+string	champion::get_name()		const { return name; }
 
 
 //CHECKERS
@@ -46,9 +46,12 @@ bool	champion::Check_is_Dead()
 	if (get_health() == 0) return 1; // if health is 0, return false (not alive)
 	return 0;
 }
+#pragma endregion
 //SHOWERS
 string	champion::Make_Fighter_Header(const champion& enemy)
-{return name + " fights " + enemy.name;}
+{
+	return name + " fights " + enemy.name;
+}
 string	champion::Make_Action_Header(const champion& enemy)
 {
 	return name + " picks an action against " + enemy.name;
@@ -57,16 +60,16 @@ void	champion::show_name()		const
 {
 	cout << "name: " << name << endl;
 }
-void	champion::show_health()		const
+void	champion::show_health() const
 {
 	cout << name << " health: " << health << "\\" << max_health << endl;
 }
-string	champion::show_all()		const
+string	champion::show_all() const
 {
-	return get_name()+ "'s Health: " + to_string(get_health()) + "/" + to_string( get_max_health());
+	return get_name() + "'s Health: " + to_string(get_health()) + "/" + to_string(get_max_health());
 
 }
-#pragma endregion
+
 //AUTOMATIC ACTIONS
 void	champion::Play_Round(champion& enemy, bool& round)
 {
@@ -118,14 +121,14 @@ void	champion::Self_heal(int i)
 }
 
 
-	champion::champion(const string& name, int health, int base_damage, int armor)
-	{
-		this->name = name;
-		this->health = health;
-		this->base_damage = base_damage;
-		this->armor = armor;
-		max_health = health;
-	}
-	champion::champion()
-	{
-	}
+champion::champion(const string& name, int health, int base_damage, int armor)
+{
+	this->name = name;
+	this->health = health;
+	this->base_damage = base_damage;
+	this->armor = armor;
+	max_health = health;
+}
+champion::champion()
+{
+}
