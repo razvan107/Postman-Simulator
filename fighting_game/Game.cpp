@@ -125,7 +125,7 @@ void Game::render()
 		window->draw(P1Sprite);
 		window->draw(P2Sprite);
 
-		window->draw(header);
+		//window->draw(header);
 		window->draw(midtext);
 		window->draw(footer);
 		break;
@@ -148,8 +148,8 @@ void Game::Intro()
 }
 void Game::prepareFight()
 {
-	midtext.setString(player1.Make_Fighter_Header(player2));
-	midtext.move(Vector2f(0, 200));
+	midtext.setString(player1.Make_Action_Header(player2));
+	midtext.move(Vector2f(50, 60));
 	prepareBackground();
 	state = 2;
 }
@@ -158,9 +158,14 @@ void Game::fight()
 	prepareFight();
 	while (true)
 	{
+		bool round = 1;
+		bool roundCount = 1;
+
 		update();
 		render();
-
+		if (player1.Check_is_Dead()) { cout << "p2 wins"; }
+		else if (player2.Check_is_Dead()) { cout << "p1 wins"; }
+		round = !round; roundCount++;
 	}
 }
 bool Game::running()

@@ -37,7 +37,7 @@ class Game
 	void prepareIntro();
 	void renderIntro();
 
-	  void prepareFight();		
+	void prepareFight();		
 	void prepareBackground();
 
 public:
