@@ -12,14 +12,14 @@ private:
 #pragma region setters_getters_checkers_showers
 	//SETTERS
 
-	void	Set_max_health	(int new_max_hp);
-	void	Set_base_damage	(int new_base_damage);
-	void	Set_armor		(int new_armor);
+	void	set_max_health	(int new_max_hp);
+	void	set_base_damage	(int new_base_damage);
+	void	set_armor		(int new_armor);
 
 	//GETTERS
 
-	int		Get_max_health()	const;
-	int		Get_base_damage()	const;
+	int		get_max_health()	const;
+	int		get_base_damage()	const;
 
 	//AUTOMATIC ACTIONS
 
@@ -31,12 +31,14 @@ private:
 
 #pragma endregion
 public:
-	champion( string& name, int health, int base_damage, int armor);
+	champion(const string& name, int health, int base_damage, int armor);
 	champion();
 
-	void	Set_health(int new_hp);
-	void	Set_name(string new_name);
-	int		Get_health()		const;
+	void	set_health(int new_hp);
+	void	set_name(string new_name);
+
+	int		get_health()		const;
+	const string& get_name() const;
 
 	void	Check_health();
 	bool	Check_is_Dead();
@@ -45,12 +47,10 @@ public:
 
 	string	Make_Fighter_Header(const champion& enemy);
 	string	Make_Action_Header(const champion& enemy);
-	void	Show_name()const;
-	void	Show_health()const;
-	string	Show_all()const;
+	void	show_name()const;
+	void	show_health()const;
+	string	show_all()const;
 
-
-	string	Get_name() const;
 };
 
 

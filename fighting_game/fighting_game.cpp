@@ -11,8 +11,6 @@ int main()
 	{
 		bool round = 1;
 		bool roundCount = 1;
-		game.renderIntro();
-
 		while (true)
 		{
 

@@ -1,13 +1,10 @@
 #include "Game.h"
-Game::Game()
+Game::Game() :player1("The Postman", 10, 200, 30), player2("Ted", 1000, 200, 30)
 {
 	prepareWindow();
 	prepareBackground();
 	prepareFont();
 	preparePlayerTextures();
-
-	player1.Set_name("the Postman");
-	player2.Set_name("Ted");
 }
 Game::~Game()
 {
@@ -17,7 +14,7 @@ Game::~Game()
 void Game::update()
 {
 	updateEvents(); //check if a button was pressed
-	footer.setString(player1.Show_all() +"   " + player2.Show_all());
+	footer.setString(player1.show_all() + "   " + player2.show_all());
 }
 void Game::updateEvents()
 {
@@ -71,7 +68,7 @@ void Game::preparePlayerTextures()
 
 
 	//PLAYER 2
-	
+
 	if (!P2Texture.loadFromFile("Resources\\Images\\P2Texture.png"))
 	{
 		cout << "p2 NOT FOUND" << endl;
@@ -115,7 +112,6 @@ void Game::renderIntro()
 {
 	window->draw(BgSprite);
 	header.setString(player1.Make_Fighter_Header(player2)); //"x fights y"
-	window->draw(header);
 }
 bool Game::running()
 {
