@@ -1,13 +1,11 @@
 #include "Game.h"
-Game::Game()
+Game::Game():player1("the Postman", 1000, 1000, 1000), player2("Ted", 1000, 1000, 1000)
 {
 	prepareWindow();
 	prepareBackground();
 	prepareFont();
 	preparePlayerTextures();
-
-	player1.Set_name("the Postman");
-	player2.Set_name("Ted");
+	prepareIntro();
 }
 Game::~Game()
 {
@@ -17,7 +15,7 @@ Game::~Game()
 void Game::update()
 {
 	updateEvents(); //check if a button was pressed
-	footer.setString(player1.Show_all() +"   " + player2.Show_all());
+	footer.setString(player1.show_all() +"   " + player2.show_all());
 }
 void Game::updateEvents()
 {
@@ -98,6 +96,11 @@ void Game::prepareFont()
 	footer.move(Vector2f(0, 360));
 }
 
+void Game::prepareIntro()
+{
+	header.setString(player1.Make_Fighter_Header(player2));
+}
+
 
 void Game::render()
 {
@@ -106,6 +109,7 @@ void Game::render()
 	window->draw(BgSprite);
 	window->draw(P1Sprite);
 	window->draw(P2Sprite);
+
 	//draw the header over the sprites
 	window->draw(header);
 	window->draw(footer);
@@ -114,7 +118,7 @@ void Game::render()
 void Game::renderIntro()
 {
 	window->draw(BgSprite);
-	header.setString(player1.Make_Fighter_Header(player2)); //"x fights y"
+
 	window->draw(header);
 }
 bool Game::running()

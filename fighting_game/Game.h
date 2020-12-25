@@ -32,6 +32,7 @@ class Game
 	void prepareBackground();
 	void preparePlayerTextures();
 	void prepareFont();
+	void prepareIntro();
 public:
 
 	Game();
