@@ -94,6 +94,10 @@ void Game::prepareFont()
 	footer.setFillColor(Color::Black);
 	footer.setCharacterSize(15);
 	footer.move(Vector2f(0, 360));
+
+	midtext.setFont(font);
+	midtext.setFillColor(Color::Black);
+	midtext.setCharacterSize(20);
 }
 
 void Game::prepareIntro()
@@ -122,6 +126,7 @@ void Game::render()
 		window->draw(P2Sprite);
 
 		window->draw(header);
+		window->draw(midtext);
 		window->draw(footer);
 		break;
 	}
@@ -143,14 +148,20 @@ void Game::Intro()
 }
 void Game::prepareFight()
 {
+	midtext.setString(player1.Make_Fighter_Header(player2));
+	midtext.move(Vector2f(0, 200));
 	prepareBackground();
 	state = 2;
 }
 void Game::fight()
 {
 	prepareFight();
-	update();
-	render();
+	while (true)
+	{
+		update();
+		render();
+
+	}
 }
 bool Game::running()
 {

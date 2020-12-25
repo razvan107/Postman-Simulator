@@ -17,6 +17,7 @@ class Game
 	Font font;
 	Text header;
 	Text footer;
+		Text midtext;
 
 	Sprite BgSprite;
 	RenderWindow* window;
