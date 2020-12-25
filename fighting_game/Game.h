@@ -20,12 +20,9 @@ class Game
 
 	Sprite BgSprite;
 	RenderWindow* window;
-
 	champion player1;
 	champion player2;
-	//champion player1(string& name, int health, int base_damage, int armor);
-	//champion player2(string& name, int health, int base_damage, int armor);
-
+	//champion* player3;
 	Texture BgTexture;
 	Texture P1Texture;
 	Texture P2Texture;
