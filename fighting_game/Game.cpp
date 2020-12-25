@@ -6,11 +6,9 @@ Game::Game()
 	prepareFont();
 	preparePlayerTextures();
 
-	player1.Set_name("ted");
-	player2.Set_name("the Postman");
-	//player3 =new champion("ahs", 2, 2,0);
+	player1.Set_name("the Postman");
+	player2.Set_name("Ted");
 }
-
 Game::~Game()
 {
 	delete  window;
@@ -19,9 +17,8 @@ Game::~Game()
 void Game::update()
 {
 	updateEvents(); //check if a button was pressed
-	header.setString(player1.Show_all() +"   " + player2.Show_all());
+	footer.setString(player1.Show_all() +"   " + player2.Show_all());
 }
-
 void Game::updateEvents()
 {
 	while (window->pollEvent(event))
@@ -46,7 +43,7 @@ void Game::prepareWindow()
 	videoMode.width = 646;
 	videoMode.height = 387;
 	window = new RenderWindow(videoMode, "Arena");
-	window->setFramerateLimit(60);
+	window->setFramerateLimit(20);
 }
 void Game::prepareBackground()
 {
@@ -73,8 +70,6 @@ void Game::preparePlayerTextures()
 	P1Sprite.setScale(Vector2f(3, 3));
 
 
-
-
 	//PLAYER 2
 	
 	if (!P2Texture.loadFromFile("Resources\\Images\\P2Texture.png"))
@@ -93,14 +88,14 @@ void Game::prepareFont()
 	{
 		cout << "FONT NOT FOUND" << endl;
 	}
-	text.setFont(font);
-	text.setFillColor(Color::Black);
-	text.setCharacterSize(20);
-
 	header.setFont(font);
 	header.setFillColor(Color::Black);
-	header.setCharacterSize(15);
-	header.move(Vector2f(0, 360));
+	header.setCharacterSize(20);
+
+	footer.setFont(font);
+	footer.setFillColor(Color::Black);
+	footer.setCharacterSize(15);
+	footer.move(Vector2f(0, 360));
 }
 
 
@@ -111,21 +106,17 @@ void Game::render()
 	window->draw(BgSprite);
 	window->draw(P1Sprite);
 	window->draw(P2Sprite);
-	//draw the text over the sprites
-	window->draw(text);
+	//draw the header over the sprites
 	window->draw(header);
+	window->draw(footer);
 	window->display();
 }
-
 void Game::renderIntro()
 {
-	string intro;
-	intro = player1.Show_Fight_Intro(player2);
 	window->draw(BgSprite);
-	text.setString(intro);
-	window->draw(text);
+	header.setString(player1.Make_Fighter_Header(player2)); //"x fights y"
+	window->draw(header);
 }
-
 bool Game::running()
 {
 	return window->isOpen();

@@ -21,11 +21,10 @@ void	champion::Set_armor(int new_armor)
 {
 	armor = new_armor;
 }
-
+void	champion::Set_name(string new_name) { name = new_name; }
 //GETTERS
+int		champion::Get_max_health()	const { return max_health; }
 int		champion::Get_health()		const  { return health;		}
-void	champion::Set_name(string new_name){ name = new_name;	}
-int		champion::Get_max_health()	const  { return max_health; }
 int		champion::Get_base_damage()	const  { return base_damage;}
 string	champion::Get_name()		const  { return name;		}
 
@@ -48,11 +47,10 @@ bool	champion::Check_is_Dead()
 	return 0;
 }
 //SHOWERS
-string	champion::Show_Fight_Intro (const champion& enemy)
+string	champion::Make_Fighter_Header(const champion& enemy)
 {return name + " fights " + enemy.name;}
-string	champion::Show_Round_Header(const champion& enemy)
+string	champion::Make_Action_Header(const champion& enemy)
 {
-	cout << endl << name << " picks an action against " << enemy.name << endl;
 	return name + " picks an action against " + enemy.name;
 }
 void	champion::Show_name()		const
@@ -66,13 +64,13 @@ void	champion::Show_health()		const
 string	champion::Show_all()		const
 {
 	return Get_name()+ "'s Health: " + to_string(Get_health()) + "/" + to_string( Get_max_health());
+
 }
 #pragma endregion
 //AUTOMATIC ACTIONS
 void	champion::Play_Round(champion& enemy, bool& round)
 {
-	//CONSOLE					//WINDOW
-	Show_Round_Header(enemy);	
+	//Make_Action_Header(enemy);	
 	bool x = Select_Attack(enemy);
 	if (x) round = !round;
 }

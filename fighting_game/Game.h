@@ -15,8 +15,8 @@ class Game
 	VideoMode videoMode;
 
 	Font font;
-	Text text;
 	Text header;
+	Text footer;
 
 	Sprite BgSprite;
 	RenderWindow* window;

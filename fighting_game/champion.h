@@ -21,12 +21,6 @@ private:
 	int		Get_max_health()	const;
 	int		Get_base_damage()	const;
 
-
-
-	//CHECKERS
-
-	//SHOWERS
-
 	//AUTOMATIC ACTIONS
 
 	bool	Select_Attack(champion& enemy);
@@ -49,8 +43,8 @@ public:
 
 	void	Play_Round(champion& enemy, bool& round);
 
-	string	Show_Fight_Intro(const champion& enemy);
-	string	Show_Round_Header(const champion& enemy);
+	string	Make_Fighter_Header(const champion& enemy);
+	string	Make_Action_Header(const champion& enemy);
 	void	Show_name()const;
 	void	Show_health()const;
 	string	Show_all()const;
