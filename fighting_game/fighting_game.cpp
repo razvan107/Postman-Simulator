@@ -4,7 +4,7 @@
 using namespace std;
 
 int main()
-{//			name hp dmg armor
+{//		
 	Game game;
 
 	while (game.running())

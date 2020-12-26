@@ -21,10 +21,6 @@ private:
 	int		get_max_health()	const;
 	int		get_base_damage()	const;
 
-	//AUTOMATIC ACTIONS
-
-	bool	Select_Attack(champion& enemy);
-
 	//ABILITIES/POWERS
 
 
@@ -36,18 +32,15 @@ public:
 	champion( const string& name, int health, int base_damage, int armor);
 	champion();
 
-	void	set_health(int new_hp);
-	void	set_name(string new_name);
-	int		get_health()		const;
+	void set_health(int new_hp);
+	void set_name(string new_name);
+	int	get_health() const;
 
 	void	Check_health();
 	bool	Check_is_Dead();
 
-	void	Play_Round(champion& enemy, bool& round);
-
 	string	Make_Fighter_Header(const champion& enemy);
 	string	Make_Action_Header(const champion& enemy);
-	void	show_name()const;
 	void	show_health()const;
 	string	show_all()const;
 

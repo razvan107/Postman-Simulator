@@ -49,7 +49,7 @@ public:
 	virtual ~Game();
 	Event event;
 	void update(bool round = 0);
-	void updateEvents(bool round = 0);
+	void updateEvents(bool& round);
 
 
 	void render();

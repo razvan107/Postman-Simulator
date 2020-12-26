@@ -15,7 +15,7 @@ void Game::update(bool round)
 	updateEvents(round);
 
 }
-void Game::updateEvents(bool round)
+void Game::updateEvents(bool& round)
 {
 	while (window->pollEvent(event))
 	{
@@ -32,14 +32,16 @@ void Game::updateEvents(bool round)
 			if (event.key.code == Keyboard::Num1)
 			{
 				player1.Basic_attack(player2);
+				round = !round;
 				break;
 			}
 			if (event.key.code == Keyboard::Num4)
 			{
 				player1.Self_heal(1);
+				//round = !round;
 				break;
 			}
-			
+
 		}
 	}
 	switch (state)
@@ -48,9 +50,16 @@ void Game::updateEvents(bool round)
 		break;
 	case 2:
 		//update footer
-		if (round)	midtext.setString(player1.Make_Action_Header(player2));
-		else 	midtext.setString(player2.Make_Action_Header(player1));
+		if (round)
+		{
+			midtext.setString(player1.Make_Action_Header(player2));
+		}
+		else
+		{
+			midtext.setString(player2.Make_Action_Header(player1));
+		}
 		footer.setString(player1.show_all() + "   " + player2.show_all());
+
 		break;
 	}
 
@@ -61,6 +70,7 @@ void Game::prepareWindow()
 	videoMode.width = 646;
 	videoMode.height = 387;
 	window = new RenderWindow(videoMode, "Arena");
+	window->setKeyRepeatEnabled(false);
 	window->setFramerateLimit(20);
 }
 void Game::prepareBackground()
@@ -175,18 +185,16 @@ void Game::prepareFight()
 void Game::fight()
 {
 	bool round = 1;
-	bool roundCount = 1;
 	prepareFight();
 	while (true)
 	{
 
 
-		update(round);
+		update(&round);
 		render();
 
-		if (player1.Check_is_Dead()) { cout << "p2 wins"; }
-		else if (player2.Check_is_Dead()) { cout << "p1 wins"; }
-		round = !round; roundCount++;
+		//if (player1.Check_is_Dead()) { cout << "p2 wins"; }
+		//else if (player2.Check_is_Dead()) { cout << "p1 wins"; }
 	}
 }
 bool Game::running()

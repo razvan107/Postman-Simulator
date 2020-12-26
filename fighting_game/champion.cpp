@@ -66,43 +66,6 @@ string	champion::show_all() const
 
 }
 
-//AUTOMATIC ACTIONS
-void	champion::Play_Round(champion& enemy, bool& round)
-{
-
-	if (round)  !round;
-}
-bool	champion::Select_Attack(champion& enemy)
-{
-	cout << endl
-		<< "1: Basic Attack" << endl
-		<< "2: " << endl
-		<< "3: " << endl
-		<< "4: Self heal" << endl
-		<< "5: Show implicit stats" << endl;
-	//int choice;
-	//cin >> choice;
-	//switch (choice)
-	//{
-	//case 1:
-	//	Basic_attack(enemy);
-	//	break;
-	//case 2:
-	//	break;
-	//case 3:
-	//	break;
-	//case 4:
-	//	Self_heal(1);
-	//	break;
-	//case 5:
-	//	show_all();
-	//	cout << endl;
-	//	enemy.show_all();
-		return 1; //1 = flip the bool to keep round intact
-	//}
-	return 0;
-}
-
 //ABILITIES/POWERS
 void	champion::Basic_attack(champion& enemy)
 {
@@ -111,8 +74,9 @@ void	champion::Basic_attack(champion& enemy)
 };
 void	champion::Self_heal(int i)
 {
-	cout << name << " healed for " << i << " health.";
 	set_health(health + i);
+	cout << name << " healed for " << i << " health.";
+
 }
 
 
