@@ -182,9 +182,9 @@ void Game::prepareFight()
 	prepareBackground();
 	state = 2;
 }
-void Game::fight()
+void Game::fight(bool round)
 {
-	bool round = 1;
+	
 	prepareFight();
 	while (true)
 	{

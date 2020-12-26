@@ -6,12 +6,12 @@ using namespace std;
 int main()
 {//		
 	Game game;
-
+	bool round = 1;
 	while (game.running())
 	{
 		game.Intro();
 		wait(2);
-		game.fight();
+		game.fight(round);
 			//
 	}
 }

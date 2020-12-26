@@ -42,7 +42,7 @@ class Game
 
 public:
 	void Intro();
-	void fight();
+	void fight(bool round);
 
 	int state = 0;
 	Game();

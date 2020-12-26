@@ -21,10 +21,6 @@ private:
 	int		get_max_health()	const;
 	int		get_base_damage()	const;
 
-	//ABILITIES/POWERS
-
-
-
 #pragma endregion
 public:
 	void	Self_heal(int i);
