@@ -26,11 +26,13 @@ private:
 	bool	Select_Attack(champion& enemy);
 
 	//ABILITIES/POWERS
-	void	Basic_attack(champion& enemy);
-	void	Self_heal(int i);
+
+
 
 #pragma endregion
 public:
+	void	Self_heal(int i);
+	void	Basic_attack(champion& enemy);
 	champion( const string& name, int health, int base_damage, int armor);
 	champion();
 

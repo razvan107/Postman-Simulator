@@ -56,10 +56,6 @@ string	champion::Make_Action_Header(const champion& enemy)
 {
 	return name + " picks an action against " + enemy.name;
 }
-void	champion::show_name()		const
-{
-	cout << "name: " << name << endl;
-}
 void	champion::show_health() const
 {
 	cout << name << " health: " << health << "\\" << max_health << endl;
@@ -73,9 +69,8 @@ string	champion::show_all() const
 //AUTOMATIC ACTIONS
 void	champion::Play_Round(champion& enemy, bool& round)
 {
-	//Make_Action_Header(enemy);	
-	bool x = Select_Attack(enemy);
-	if (x) round = !round;
+
+	if (round)  !round;
 }
 bool	champion::Select_Attack(champion& enemy)
 {
@@ -85,26 +80,26 @@ bool	champion::Select_Attack(champion& enemy)
 		<< "3: " << endl
 		<< "4: Self heal" << endl
 		<< "5: Show implicit stats" << endl;
-	int choice;
-	cin >> choice;
-	switch (choice)
-	{
-	case 1:
-		Basic_attack(enemy);
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	case 4:
-		Self_heal(1);
-		break;
-	case 5:
-		show_all();
-		cout << endl;
-		enemy.show_all();
+	//int choice;
+	//cin >> choice;
+	//switch (choice)
+	//{
+	//case 1:
+	//	Basic_attack(enemy);
+	//	break;
+	//case 2:
+	//	break;
+	//case 3:
+	//	break;
+	//case 4:
+	//	Self_heal(1);
+	//	break;
+	//case 5:
+	//	show_all();
+	//	cout << endl;
+	//	enemy.show_all();
 		return 1; //1 = flip the bool to keep round intact
-	}
+	//}
 	return 0;
 }
 

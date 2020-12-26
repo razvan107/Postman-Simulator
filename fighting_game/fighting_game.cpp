@@ -6,12 +6,12 @@ using namespace std;
 int main()
 {//			name hp dmg armor
 	Game game;
-	
+
 	while (game.running())
 	{
 		game.Intro();
-
+		wait(2);
 		game.fight();
-			//if (round) player1.Play_Round(player2, round); else  player2.Play_Round(player1, round);
+			//
 	}
 }

@@ -1,5 +1,5 @@
 #include "Game.h"
-Game::Game() :player1("the Postman", 1000, 1000, 1000), player2("Ted", 1000, 1000, 1000)
+Game::Game() :player1("the Postman", 1000, 10, 10), player2("Ted", 1000, 20, 1)
 {
 	prepareWindow();
 	prepareFont();
@@ -10,14 +10,12 @@ Game::~Game()
 	delete  window;
 }
 
-void Game::update()
+void Game::update(bool round)
 {
-	//check if a button was pressed
-	updateEvents();
-	//update hp
-	footer.setString(player1.show_all() + "   " + player2.show_all());
+	updateEvents(round);
+
 }
-void Game::updateEvents()
+void Game::updateEvents(bool round)
 {
 	while (window->pollEvent(event))
 	{
@@ -31,9 +29,31 @@ void Game::updateEvents()
 			{
 				window->close(); break;
 			}
-
+			if (event.key.code == Keyboard::Num1)
+			{
+				player1.Basic_attack(player2);
+				break;
+			}
+			if (event.key.code == Keyboard::Num4)
+			{
+				player1.Self_heal(1);
+				break;
+			}
+			
 		}
 	}
+	switch (state)
+	{
+	case 1:
+		break;
+	case 2:
+		//update footer
+		if (round)	midtext.setString(player1.Make_Action_Header(player2));
+		else 	midtext.setString(player2.Make_Action_Header(player1));
+		footer.setString(player1.show_all() + "   " + player2.show_all());
+		break;
+	}
+
 }
 
 void Game::prepareWindow()
@@ -99,7 +119,6 @@ void Game::prepareFont()
 	midtext.setFillColor(Color::Black);
 	midtext.setCharacterSize(20);
 }
-
 void Game::prepareIntro()
 {
 	Game::state = 1;
@@ -155,14 +174,16 @@ void Game::prepareFight()
 }
 void Game::fight()
 {
+	bool round = 1;
+	bool roundCount = 1;
 	prepareFight();
 	while (true)
 	{
-		bool round = 1;
-		bool roundCount = 1;
 
-		update();
+
+		update(round);
 		render();
+
 		if (player1.Check_is_Dead()) { cout << "p2 wins"; }
 		else if (player2.Check_is_Dead()) { cout << "p1 wins"; }
 		round = !round; roundCount++;

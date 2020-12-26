@@ -48,8 +48,8 @@ public:
 	Game();
 	virtual ~Game();
 	Event event;
-	void update();
-	void updateEvents();
+	void update(bool round = 0);
+	void updateEvents(bool round = 0);
 
 
 	void render();
